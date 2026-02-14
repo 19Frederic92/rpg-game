@@ -199,3 +199,8 @@ h2 {
   max-height: 100vh;
   padding: 1rem 0;
 }
+#screen-class {
+  overflow-y: auto;
+  max-height: 100vh;
+  padding: 1rem 0;
+}
