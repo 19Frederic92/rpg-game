@@ -1,0 +1,56 @@
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: rpg_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-rpgdb}
+      POSTGRES_USER: ${POSTGRES_USER:-rpguser}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-changeme}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - rpg_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-rpguser} -d ${POSTGRES_DB:-rpgdb}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: rpg_backend
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-rpguser}:${POSTGRES_PASSWORD:-changeme}@db:5432/${POSTGRES_DB:-rpgdb}
+      SECRET_KEY: ${SECRET_KEY:-supersecretkey_change_in_production}
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - rpg_network
+    volumes:
+      - ./backend:/app
+
+  nginx:
+    image: nginx:alpine
+    container_name: rpg_nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./frontend:/usr/share/nginx/html:ro
+    depends_on:
+      - backend
+    networks:
+      - rpg_network
+
+networks:
+  rpg_network:
+    driver: bridge
+
+volumes:
+  postgres_data:
