@@ -194,3 +194,8 @@ h2 {
   color: #c0392b; cursor: pointer; transition: all 0.2s;
 }
 .btn-danger:hover { background: rgba(192,57,43,0.1); border-color: #c0392b; }
+#screen-class {
+  overflow-y: auto;
+  max-height: 100vh;
+  padding: 1rem 0;
+}
