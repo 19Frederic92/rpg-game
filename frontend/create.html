@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>⚔️ Chronicles of the Void — Créer un personnage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="create.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="game-header">
+      <h1 class="logo">⚔️ Chronicles of the Void</h1>
+    </header>
+
+    <!-- Écran : choisir un nom -->
+    <section id="screen-name" class="screen active">
+      <div class="screen-inner">
+        <h2>Votre légende commence ici</h2>
+        <p class="hint">Choisissez le nom qui résonnera dans les annales</p>
+        <div class="name-input-wrap">
+          <input type="text" id="name-input" placeholder="Nom du personnage" maxlength="20" autocomplete="off" />
+          <span id="name-error" class="field-error"></span>
+        </div>
+        <button class="btn-primary" id="btn-name-next">Choisir ma classe →</button>
+      </div>
+    </section>
+
+    <!-- Écran : choisir une classe -->
+    <section id="screen-class" class="screen">
+      <div class="screen-inner wide">
+        <h2>Quelle est votre voie, <span id="display-name">Héros</span> ?</h2>
+        <div class="class-grid">
+
+          <div class="class-card" data-class="warrior">
+            <div class="puppet-wrap">
+              <svg class="puppet" viewBox="0 0 100 160" xmlns="http://www.w3.org/2000/svg">
+                <!-- Tête -->
+                <circle cx="50" cy="22" r="14" fill="#c8a96e" stroke="#7a5c2e" stroke-width="2"/>
+                <circle cx="44" cy="20" r="2" fill="#5a3e1b"/>
+                <circle cx="56" cy="20" r="2" fill="#5a3e1b"/>
+                <path d="M44 27 Q50 31 56 27" stroke="#5a3e1b" stroke-width="1.5" fill="none"/>
+                <!-- Casque guerrier -->
+                <path d="M36 18 Q50 4 64 18 L62 22 Q50 10 38 22Z" fill="#7a5c2e" stroke="#5a3e1b" stroke-width="1"/>
+                <rect x="34" y="17" width="6" height="3" rx="1" fill="#7a5c2e"/>
+                <rect x="60" y="17" width="6" height="3" rx="1" fill="#7a5c2e"/>
+                <!-- Corps -->
+                <rect x="36" y="38" width="28" height="32" rx="4" fill="#c8a96e" stroke="#7a5c2e" stroke-width="2"/>
+                <!-- Armure torse -->
+                <rect x="38" y="40" width="24" height="28" rx="3" fill="#8b6914" stroke="#5a3e1b" stroke-width="1"/>
+                <line x1="50" y1="40" x2="50" y2="68" stroke="#5a3e1b" stroke-width="1"/>
+                <line x1="38" y1="52" x2="62" y2="52" stroke="#5a3e1b" stroke-width="1"/>
+                <!-- Cou -->
+                <rect x="45" y="35" width="10" height="5" rx="2" fill="#c8a96e" stroke="#7a5c2e" stroke-width="1.5"/>
+                <!-- Bras gauche (avec épée) -->
+                <g class="arm-left">
+                  <rect x="20" y="38" width="14" height="8" rx="4" fill="#c8a96e" stroke="#7a5c2e" stroke-width="1.5"/>
+                  <rect x="8" y="43" width="14" height="7" rx="3" fill="#c8a96e" stroke="#7a5c2e" stroke-width="1.5"/>
+                  <!-- Épée -->
+                  <rect x="2" y="35" width="4" height="24" rx="1" fill="#aaa" stroke="#666" stroke-width="1"/>
+                  <rect x="0" y="45" width="8" height="3" rx="1" fill="#8b6914"/>
+                  <rect x="3" y="57" width="2" height="5" rx="1" fill="#7a5c2e"/>
+                </g>
+                <!-- Bras droit (avec bouclier) -->
+                <g class="arm-right">
+                  <rect x="66" y="38" width="14" height="8" rx="4" fill="#c8a96e" stroke="#7a5c2e" stroke-width="1.5"/>
+                  <rect x="78" y="43" width="14" height="7" rx="3" fill="#c8a96e" stroke="#7a5c2e" stroke-width="1.5"/>
+                  <!-- Bouclier -->
+                  <path d="M88 37 Q98 42 98 52 Q98 60 88 65 Q78 60 78 52 Q78 42 88 37Z" fill="#8b6914" stroke="#5a3e1b" stroke-width="1.5"/>
+                  <line x1="88" y1="39" x2="88" y2="63" stroke="#5a3e1b" stroke-width="1"/>
+                </g>
+                <!-- Jambes -->
+                <rect x="36" y="68" width="12" height="28" rx="4" fill="#c8a96e" stroke="#7a5c2e" stroke-width="1.5"/>
+                <rect x="52" y="68" width="12" height="28" rx="4" fill="#c8a96e" stroke="#7a5c2e" stroke-width="1.5"/>
+                <!-- Bottes -->
+                <rect x="34" y="92" width="14" height="8" rx="3" fill="#7a5c2e" stroke="#5a3e1b" stroke-width="1.5"/>
+                <rect x="50" y="92" width="14" height="8" rx="3" fill="#7a5c2e" stroke="#5a3e1b" stroke-width="1.5"/>
+                <!-- Articulations bois -->
+                <circle cx="36" cy="38" r="3" fill="#a07840" stroke="#7a5c2e" stroke-width="1"/>
+                <circle cx="64" cy="38" r="3" fill="#a07840" stroke="#7a5c2e" stroke-width="1"/>
+                <circle cx="42" cy="68" r="3" fill="#a07840" stroke="#7a5c2e" stroke-width="1"/>
+                <circle cx="58" cy="68" r="3" fill="#a07840" stroke="#7a5c2e" stroke-width="1"/>
+              </svg>
+            </div>
+            <h3>Guerrier</h3>
+            <p class="class-desc">Maître du combat rapproché, robuste et implacable</p>
+            <div class="class-stats">
+              <div class="stat-bar"><span>HP</span><div class="bar"><div class="fill hp" style="width:100%"></div></div><span>120</span></div>
+              <div class="stat-bar"><span>FOR</span><div class="bar"><div class="fill str" style="width:94%"></div></div><span>15</span></div>
+              <div class="stat-bar"><span>AGI</span><div class="bar"><div class="fill agi" style="width:50%"></div></div><span>8</span></div>
+            </div>
+          </div>
+
+          <div class="class-card" data-class="mage">
+            <div class="puppet-wrap">
+              <svg class="puppet" viewBox="0 0 100 160" xmlns="http://www.w3.org/2000/svg">
+                <!-- Tête -->
+                <circle cx="50" cy="22" r="14" fill="#c8a96e" stroke="#7a5c2e" stroke-width="2"/>
+                <circle cx="44" cy="20" r="2" fill="#5a3e1b"/>
+                <circle cx="56" cy="20" r="2" fill="#5a3e1b"/>
+                <path d="M44 27 Q50 31 56 27" stroke="#5a3e1b" stroke-width="1.5" fill="none"/>
+                <!-- Chapeau mage -->
+                <path d="M30 20 L50 0 L70 20Z" fill="#2c1a6e" stroke="#1a0f40" stroke-width="1.5"/>
+                <rect x="28" y="19" width="44" height="5" rx="2" fill="#3d2594" stroke="#1a0f40" stroke-width="1"/>
+                <circle cx="50" cy="4" r="3" fill="#f0d080"/>
+                <!-- Corps - robe -->
+                <path d="M36 38 Q30 70 28 100 L72 100 Q70 70 64 38Z" fill="#2c1a6e" stroke="#1a0f40" stroke-width="2"/>
+                <path d="M40 40 Q34 70 32 96 L44 96 Q42 70 46 40Z" fill="#3d2594" opacity="0.5"/>
+                <!-- Cou -->
+                <rect x="45" y="35" width="10" height="5" rx="2" fill="#c8a96e" stroke="#7a5c2e" stroke-width="1.5"/>
+                <!-- Étoiles sur la robe -->
+                <text x="48" y="60" font-size="8" fill="#f0d080">✦</text>
+                <text x="42" y="75" font-size="6" fill="#f0d080">✦</text>
+                <text x="54" y="78" font-size="5" fill="#f0d080">✦</text>
+                <!-- Bras gauche -->
+                <g class="arm-left">
+                  <rect x="22" y="38" width="13" height="7" rx="3" fill="#2c1a6e" stroke="#1a0f40" stroke-width="1.5"/>
+                  <rect x="10" y="42" width="13" height="7" rx="3" fill="#c8a96e" stroke="#7a5c2e" stroke-width="1.5"/>
+                  <!-- Bâton magique -->
+                  <rect x="4" y="25" width="4" height="30" rx="1" fill="#7a5c2e" stroke="#5a3e1b" stroke-width="1"/>
+                  <circle cx="6" cy="23" r="6" fill="#7030e0" stroke="#4a20a0" stroke-width="1.5"/>
+                  <circle cx="6" cy="23" r="3" fill="#b080ff" opacity="0.8"/>
+                </g>
+                <!-- Bras droit -->
+                <g class="arm-right">
+                  <rect x="65" y="38" width="13" height="7" rx="3" fill="#2c1a6e" stroke="#1a0f40" stroke-width="1.5"/>
+                  <rect x="77" y="42" width="13" height="7" rx="3" fill="#c8a96e" stroke="#7a5c2e" stroke-width="1.5"/>
+                </g>
+                <!-- Jambes (sous la robe, juste les pieds) -->
+                <rect x="38" y="96" width="10" height="8" rx="3" fill="#1a0f40" stroke="#0d0820" stroke-width="1.5"/>
+                <rect x="52" y="96" width="10" height="8" rx="3" fill="#1a0f40" stroke="#0d0820" stroke-width="1.5"/>
+                <!-- Articulations -->
+                <circle cx="36" cy="38" r="3" fill="#a07840" stroke="#7a5c2e" stroke-width="1"/>
+                <circle cx="64" cy="38" r="3" fill="#a07840" stroke="#7a5c2e" stroke-width="1"/>
+              </svg>
+            </div>
+            <h3>Mage</h3>
+            <p class="class-desc">Tisseur d'arcanes, fragile mais dévastateur</p>
+            <div class="class-stats">
+              <div class="stat-bar"><span>HP</span><div class="bar"><div class="fill hp" style="width:58%"></div></div><span>70</span></div>
+              <div class="stat-bar"><span>FOR</span><div class="bar"><div class="fill str" style="width:38%"></div></div><span>6</span></div>
+              <div class="stat-bar"><span>AGI</span><div class="bar"><div class="fill agi" style="width:63%"></div></div><span>10</span></div>
+            </div>
+          </div>
+
+          <div class="class-card" data-class="archer">
+            <div class="puppet-wrap">
+              <svg class="puppet" viewBox="0 0 100 160" xmlns="http://www.w3.org/2000/svg">
+                <!-- Tête -->
+                <circle cx="50" cy="22" r="14" fill="#c8a96e" stroke="#7a5c2e" stroke-width="2"/>
+                <circle cx="44" cy="20" r="2" fill="#5a3e1b"/>
+                <circle cx="56" cy="20" r="2" fill="#5a3e1b"/>
+                <path d="M44 27 Q50 31 56 27" stroke="#5a3e1b" stroke-width="1.5" fill="none"/>
+                <!-- Capuche archer -->
+                <path d="M36 16 Q50 6 64 16 Q64 28 50 30 Q36 28 36 16Z" fill="#2d5a1b" stroke="#1a3a10" stroke-width="1.5"/>
+                <path d="M36 16 Q32 22 34 30 Q36 28 36 16Z" fill="#1a3a10"/>
+                <!-- Corps -->
+                <rect x="36" y="38" width="28" height="32" rx="4" fill="#c8a96e" stroke="#7a5c2e" stroke-width="2"/>
+                <!-- Veste cuir -->
+                <rect x="38" y="40" width="24" height="28" rx="3" fill="#4a7a2a" stroke="#2d5a1b" stroke-width="1"/>
+                <line x1="50" y1="40" x2="50" y2="68" stroke="#2d5a1b" stroke-width="1.5"/>
+                <!-- Cou -->
+                <rect x="45" y="35" width="10" height="5" rx="2" fill="#c8a96e" stroke="#7a5c2e" stroke-width="1.5"/>
+                <!-- Bras gauche (arc) -->
+                <g class="arm-left">
+                  <rect x="20" y="38" width="14" height="8" rx="4" fill="#4a7a2a" stroke="#2d5a1b" stroke-width="1.5"/>
+                  <rect x="8" y="42" width="13" height="7" rx="3" fill="#c8a96e" stroke="#7a5c2e" stroke-width="1.5"/>
+                  <!-- Arc -->
+                  <path d="M4 25 Q-4 50 4 75" stroke="#7a5c2e" stroke-width="3" fill="none"/>
+                  <line x1="4" y1="25" x2="4" y2="75" stroke="#c8a96e" stroke-width="1" stroke-dasharray="2,2"/>
+                </g>
+                <!-- Bras droit (flèche) -->
+                <g class="arm-right">
+                  <rect x="66" y="38" width="14" height="8" rx="4" fill="#4a7a2a" stroke="#2d5a1b" stroke-width="1.5"/>
+                  <rect x="78" y="42" width="13" height="7" rx="3" fill="#c8a96e" stroke="#7a5c2e" stroke-width="1.5"/>
+                  <!-- Flèche -->
+                  <line x1="70" y1="46" x2="98" y2="46" stroke="#7a5c2e" stroke-width="2"/>
+                  <polygon points="98,43 104,46 98,49" fill="#aaa"/>
+                  <path d="M70 43 L74 46 L70 49Z" fill="#2d5a1b"/>
+                </g>
+                <!-- Jambes -->
+                <rect x="36" y="68" width="12" height="28" rx="4" fill="#c8a96e" stroke="#7a5c2e" stroke-width="1.5"/>
+                <rect x="52" y="68" width="12" height="28" rx="4" fill="#c8a96e" stroke="#7a5c2e" stroke-width="1.5"/>
+                <!-- Bottes -->
+                <rect x="34" y="92" width="14" height="8" rx="3" fill="#2d5a1b" stroke="#1a3a10" stroke-width="1.5"/>
+                <rect x="50" y="92" width="14" height="8" rx="3" fill="#2d5a1b" stroke="#1a3a10" stroke-width="1.5"/>
+                <!-- Articulations -->
+                <circle cx="36" cy="38" r="3" fill="#a07840" stroke="#7a5c2e" stroke-width="1"/>
+                <circle cx="64" cy="38" r="3" fill="#a07840" stroke="#7a5c2e" stroke-width="1"/>
+                <circle cx="42" cy="68" r="3" fill="#a07840" stroke="#7a5c2e" stroke-width="1"/>
+                <circle cx="58" cy="68" r="3" fill="#a07840" stroke="#7a5c2e" stroke-width="1"/>
+              </svg>
+            </div>
+            <h3>Archer</h3>
+            <p class="class-desc">Précision mortelle depuis l'ombre des bois</p>
+            <div class="class-stats">
+              <div class="stat-bar"><span>HP</span><div class="bar"><div class="fill hp" style="width:75%"></div></div><span>90</span></div>
+              <div class="stat-bar"><span>FOR</span><div class="bar"><div class="fill str" style="width:63%"></div></div><span>10</span></div>
+              <div class="stat-bar"><span>AGI</span><div class="bar"><div class="fill agi" style="width:88%"></div></div><span>14</span></div>
+            </div>
+          </div>
+
+          <div class="class-card" data-class="rogue">
+            <div class="puppet-wrap">
+              <svg class="puppet" viewBox="0 0 100 160" xmlns="http://www.w3.org/2000/svg">
+                <!-- Tête -->
+                <circle cx="50" cy="22" r="14" fill="#c8a96e" stroke="#7a5c2e" stroke-width="2"/>
+                <!-- Masque voleur -->
+                <rect x="38" y="19" width="24" height="8" rx="4" fill="#1a1a2e" stroke="#0d0d1a" stroke-width="1"/>
+                <circle cx="44" cy="22" r="2.5" fill="#2a2a4e"/>
+                <circle cx="56" cy="22" r="2.5" fill="#2a2a4e"/>
+                <path d="M44 29 Q50 33 56 29" stroke="#5a3e1b" stroke-width="1.5" fill="none"/>
+                <!-- Capuche sombre -->
+                <path d="M34 14 Q50 2 66 14 Q68 24 64 28 Q50 32 36 28 Q32 24 34 14Z" fill="#1a1a2e" stroke="#0d0d1a" stroke-width="1.5" opacity="0.9"/>
+                <!-- Corps -->
+                <rect x="36" y="38" width="28" height="32" rx="4" fill="#c8a96e" stroke="#7a5c2e" stroke-width="2"/>
+                <!-- Tenue sombre -->
+                <rect x="38" y="40" width="24" height="28" rx="3" fill="#1a1a2e" stroke="#0d0d1a" stroke-width="1"/>
+                <!-- Ceinture -->
+                <rect x="36" y="58" width="28" height="5" rx="1" fill="#4a3010" stroke="#2a1a08" stroke-width="1"/>
+                <rect x="48" y="57" width="4" height="7" rx="1" fill="#c9a84c"/>
+                <!-- Cou -->
+                <rect x="45" y="35" width="10" height="5" rx="2" fill="#c8a96e" stroke="#7a5c2e" stroke-width="1.5"/>
+                <!-- Bras gauche (dague) -->
+                <g class="arm-left">
+                  <rect x="20" y="38" width="14" height="8" rx="4" fill="#1a1a2e" stroke="#0d0d1a" stroke-width="1.5"/>
+                  <rect x="8" y="42" width="13" height="7" rx="3" fill="#c8a96e" stroke="#7a5c2e" stroke-width="1.5"/>
+                  <!-- Dague -->
+                  <rect x="2" y="40" width="3" height="18" rx="1" fill="#ccc" stroke="#999" stroke-width="1"/>
+                  <rect x="0" y="48" width="7" height="2" rx="1" fill="#c9a84c"/>
+                  <rect x="2.5" y="57" width="2" height="5" rx="1" fill="#4a3010"/>
+                </g>
+                <!-- Bras droit (dague 2) -->
+                <g class="arm-right">
+                  <rect x="66" y="38" width="14" height="8" rx="4" fill="#1a1a2e" stroke="#0d0d1a" stroke-width="1.5"/>
+                  <rect x="78" y="42" width="13" height="7" rx="3" fill="#c8a96e" stroke="#7a5c2e" stroke-width="1.5"/>
+                  <!-- Dague 2 -->
+                  <rect x="95" y="40" width="3" height="18" rx="1" fill="#ccc" stroke="#999" stroke-width="1"/>
+                  <rect x="93" y="48" width="7" height="2" rx="1" fill="#c9a84c"/>
+                  <rect x="95.5" y="57" width="2" height="5" rx="1" fill="#4a3010"/>
+                </g>
+                <!-- Jambes -->
+                <rect x="36" y="68" width="12" height="28" rx="4" fill="#1a1a2e" stroke="#0d0d1a" stroke-width="1.5"/>
+                <rect x="52" y="68" width="12" height="28" rx="4" fill="#1a1a2e" stroke="#0d0d1a" stroke-width="1.5"/>
+                <!-- Bottes -->
+                <rect x="34" y="92" width="14" height="8" rx="3" fill="#0d0d1a" stroke="#000" stroke-width="1.5"/>
+                <rect x="50" y="92" width="14" height="8" rx="3" fill="#0d0d1a" stroke="#000" stroke-width="1.5"/>
+                <!-- Articulations -->
+                <circle cx="36" cy="38" r="3" fill="#a07840" stroke="#7a5c2e" stroke-width="1"/>
+                <circle cx="64" cy="38" r="3" fill="#a07840" stroke="#7a5c2e" stroke-width="1"/>
+                <circle cx="42" cy="68" r="3" fill="#a07840" stroke="#7a5c2e" stroke-width="1"/>
+                <circle cx="58" cy="68" r="3" fill="#a07840" stroke="#7a5c2e" stroke-width="1"/>
+              </svg>
+            </div>
+            <h3>Voleur</h3>
+            <p class="class-desc">Rapide comme l'ombre, insaisissable et mortel</p>
+            <div class="class-stats">
+              <div class="stat-bar"><span>HP</span><div class="bar"><div class="fill hp" style="width:67%"></div></div><span>80</span></div>
+              <div class="stat-bar"><span>FOR</span><div class="bar"><div class="fill str" style="width:50%"></div></div><span>8</span></div>
+              <div class="stat-bar"><span>AGI</span><div class="bar"><div class="fill agi" style="width:100%"></div></div><span>16</span></div>
+            </div>
+          </div>
+
+        </div>
+        <div class="class-actions">
+          <button class="btn-ghost" id="btn-class-back">← Retour</button>
+          <button class="btn-primary" id="btn-class-next" disabled>Confirmer mon choix →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Écran : confirmation -->
+    <section id="screen-confirm" class="screen">
+      <div class="screen-inner">
+        <h2>Prêt à l'aventure ?</h2>
+        <div class="confirm-puppet" id="confirm-puppet"></div>
+        <div class="confirm-info">
+          <div class="confirm-name" id="confirm-name"></div>
+          <div class="confirm-class" id="confirm-class"></div>
+        </div>
+        <div class="confirm-stats" id="confirm-stats"></div>
+        <div id="create-error" class="field-error center"></div>
+        <div class="class-actions">
+          <button class="btn-ghost" id="btn-confirm-back">← Changer de classe</button>
+          <button class="btn-primary" id="btn-confirm-create">Commencer l'aventure ⚔️</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Écran : profil -->
+    <section id="screen-profile" class="screen">
+      <div class="screen-inner wide">
+        <div class="profile-layout">
+          <div class="profile-left">
+            <div class="profile-puppet" id="profile-puppet"></div>
+            <div class="profile-name-wrap">
+              <h2 id="profile-username"></h2>
+              <span class="profile-class-badge" id="profile-class-badge"></span>
+            </div>
+            <div class="profile-level">
+              <span>Niveau <strong id="profile-level"></strong></span>
+              <div class="xp-bar-wrap">
+                <div class="xp-bar"><div class="xp-fill" id="xp-fill"></div></div>
+                <span class="xp-label" id="xp-label"></span>
+              </div>
+            </div>
+          </div>
+          <div class="profile-right">
+            <div class="stats-grid">
+              <div class="stat-box hp-box">
+                <span class="stat-icon">❤️</span>
+                <span class="stat-label">HP</span>
+                <span class="stat-value" id="profile-hp"></span>
+              </div>
+              <div class="stat-box energy-box">
+                <span class="stat-icon">⚡</span>
+                <span class="stat-label">Énergie</span>
+                <span class="stat-value" id="profile-energy"></span>
+              </div>
+              <div class="stat-box str-box">
+                <span class="stat-icon">⚔️</span>
+                <span class="stat-label">Force</span>
+                <span class="stat-value" id="profile-str"></span>
+              </div>
+              <div class="stat-box agi-box">
+                <span class="stat-icon">🏃</span>
+                <span class="stat-label">Agilité</span>
+                <span class="stat-value" id="profile-agi"></span>
+              </div>
+              <div class="stat-box gold-box">
+                <span class="stat-icon">🪙</span>
+                <span class="stat-label">Or</span>
+                <span class="stat-value" id="profile-gold"></span>
+              </div>
+            </div>
+            <div class="profile-actions">
+              <button class="btn-primary" id="btn-play">Partir à l'aventure 🗺️</button>
+              <button class="btn-danger" id="btn-delete">Supprimer ce personnage</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+  <script src="js/puppets.js"></script>
+  <script src="js/create.js"></script>
+</body>
+</html>

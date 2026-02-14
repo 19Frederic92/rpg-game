@@ -21,8 +21,7 @@ async function checkServer() {
 }
 
 startBtn.addEventListener('click', () => {
-  // Redirigera vers la page de création de personnage (étape 2)
-  alert('Création de personnage — à venir dans l\'étape 2 ! 🗡️');
+  window.location.href = '/create.html';
 });
 
 checkServer();
