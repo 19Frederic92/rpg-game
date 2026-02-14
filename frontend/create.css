@@ -109,6 +109,8 @@ h2 {
 }
 .class-desc { font-size: 0.8rem; color: var(--text-muted); font-style: italic; margin-bottom: 0.8rem; }
 
+.class-card * { pointer-events: none; }
+
 /* Barres de stats */
 .class-stats { display: flex; flex-direction: column; gap: 0.3rem; }
 .stat-bar { display: flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; }
