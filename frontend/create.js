@@ -205,3 +205,11 @@ document.getElementById('btn-delete').addEventListener('click', async () => {
   showScreen('screen-name');
 });
 
+document.getElementById('btn-logout').addEventListener('click', () => {
+  clearStoredUsername();
+  state.player = null;
+  state.name = '';
+  state.playerClass = null;
+  nameInput.value = '';
+  showScreen('screen-name');
+});
