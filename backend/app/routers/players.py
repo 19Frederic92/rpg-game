@@ -57,3 +57,4 @@ async def delete_player(player_id: int, db: AsyncSession = Depends(get_db)):
     if not player:
         raise HTTPException(status_code=404, detail="Personnage introuvable")
     await db.delete(player)
+    return None
