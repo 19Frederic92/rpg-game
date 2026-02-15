@@ -80,12 +80,33 @@ const nameInput   = document.getElementById('name-input');
 const nameError   = document.getElementById('name-error');
 const btnNameNext = document.getElementById('btn-name-next');
 
-btnNameNext.addEventListener('click', () => {
+btnNameNext.addEventListener('click', async () => {
   const val = nameInput.value.trim();
   if (val.length < 3) { nameError.textContent = 'Au moins 3 caractères'; return; }
   if (val.length > 20) { nameError.textContent = 'Maximum 20 caractères'; return; }
   if (!/^[a-zA-Z0-9_-]+$/.test(val)) { nameError.textContent = 'Lettres, chiffres, - et _ uniquement'; return; }
   nameError.textContent = '';
+
+  // Vérifier si le personnage existe déjà en BDD
+  btnNameNext.disabled = true;
+  btnNameNext.textContent = '...';
+  try {
+    const res = await fetch(`/api/players/${val}`);
+    const data = await res.json();
+    if (data.exists) {
+      // Personnage trouvé → connexion directe
+      state.player = data.player;
+      setStoredUsername(data.player.username);
+      renderProfile(data.player);
+      showScreen('screen-profile');
+      return;
+    }
+  } catch(e) {}  finally {
+    btnNameNext.disabled = false;
+    btnNameNext.textContent = 'Choisir ma classe →';
+  }
+
+  // Nouveau personnage → création
   state.name = val;
   document.getElementById('display-name').textContent = val;
   showScreen('screen-class');
