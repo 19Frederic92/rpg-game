@@ -35,16 +35,21 @@ async def test_get_player(client):
 @pytest.mark.anyio
 async def test_delete_player(client):
     # Création
+    username = "ToDelete"
     res_create = await client.post("/api/players/create", json={
-        "username": "ToDelete",
+        "username": username,
         "player_class": "rogue"
     })
     player_id = res_create.json()["id"]
 
-    # Suppression
-    response = await client.delete(f"/api/players/{player_id}")
+    # Suppression via la nouvelle route
+    response = await client.delete(f"/api/players/id/{player_id}")
     assert response.status_code == 204
 
-    # Vérification
-    res_get = await client.get("/api/players/ToDelete")
+    # Vérification par nom
+    res_get = await client.get(f"/api/players/{username}")
     assert res_get.json()["exists"] is False
+
+    # Vérification par ID (devrait être 404)
+    res_get_id = await client.get(f"/api/players/id/{player_id}")
+    assert res_get_id.status_code == 404

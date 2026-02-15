@@ -28,6 +28,7 @@ async def create_player(data: PlayerCreate, db: AsyncSession = Depends(get_db)):
     )
     db.add(player)
     await db.flush()
+    await db.commit()
     await db.refresh(player)
     return player
 
@@ -50,11 +51,12 @@ async def get_player_by_id(player_id: int, db: AsyncSession = Depends(get_db)):
     return player
 
 
-@router.delete("/{player_id}", status_code=204)
+@router.delete("/id/{player_id}", status_code=204)
 async def delete_player(player_id: int, db: AsyncSession = Depends(get_db)):
     result = await db.execute(select(Player).where(Player.id == player_id))
     player = result.scalar_one_or_none()
     if not player:
         raise HTTPException(status_code=404, detail="Personnage introuvable")
     await db.delete(player)
+    await db.commit()
     return None
