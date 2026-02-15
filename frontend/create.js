@@ -205,4 +205,3 @@ document.getElementById('btn-delete').addEventListener('click', async () => {
   showScreen('screen-name');
 });
 
-
