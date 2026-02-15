@@ -51,7 +51,6 @@ function openClassPopup(playerClass) {
     <div class="popup-stat"><span class="label">⚔️ Force</span><span class="value">${s.strength}</span></div>
     <div class="popup-stat"><span class="label">🏃 Agilité</span><span class="value">${s.agility}</span></div>
   `;
-
   overlay.classList.add('active');
   state.playerClass = playerClass;
 }
@@ -95,6 +94,7 @@ btnNameNext.addEventListener('click', async () => {
     const data = await res.json();
 
     if (data.exists) {
+      // Personnage trouvé → connexion directe
       state.player = data.player;
       setStoredUsername(data.player.username);
       renderProfile(data.player);
@@ -102,7 +102,7 @@ btnNameNext.addEventListener('click', async () => {
       return;
     }
 
-    // Nouveau personnage
+    // Nouveau personnage → création
     state.name = val;
     document.getElementById('display-name').textContent = val;
     showScreen('screen-class');
