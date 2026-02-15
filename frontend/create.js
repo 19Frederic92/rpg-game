@@ -194,8 +194,9 @@ document.getElementById('btn-play').addEventListener('click', () => {
   alert('Exploration — à venir dans l\'étape 3 ! 🗺️');
 });
 
-document.getElementById('btn-delete').addEventListener('click', () => {
-  if (!confirm(`Supprimer définitivement ${state.player.username} ?`)) return;
+document.getElementById('btn-delete').addEventListener('click', async () => {
+  if (!confirm('Supprimer definitivement ' + state.player.username + ' ?')) return;
+  await fetch(`/api/players/${state.player.id}`, { method: 'DELETE' });
   clearStoredUsername();
   state.player = null;
   state.name = '';
@@ -203,3 +204,5 @@ document.getElementById('btn-delete').addEventListener('click', () => {
   nameInput.value = '';
   showScreen('screen-name');
 });
+
+
