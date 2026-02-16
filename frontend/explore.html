@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>⚔️ Chronicles of the Void — Exploration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="explore.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="game-header">
+      <a href="create.html" class="header-back">← Profil</a>
+      <h1 class="logo">⚔️ Chronicles of the Void</h1>
+      <div class="header-stats">
+        <span id="hdr-hp">❤️ --</span>
+        <span id="hdr-gold">🪙 --</span>
+        <span id="hdr-level">Niv. --</span>
+      </div>
+    </header>
+
+    <main class="explore-layout">
+
+      <!-- Carte SVG -->
+      <div class="map-panel">
+        <h2 class="panel-title">Carte du Monde</h2>
+        <div class="map-wrap">
+          <svg id="world-map" viewBox="0 0 500 380" xmlns="http://www.w3.org/2000/svg">
+
+            <!-- Fond -->
+            <rect width="500" height="380" fill="#0d0d12"/>
+
+            <!-- Routes entre les lieux -->
+            <line x1="180" y1="200" x2="120" y2="120" stroke="#3a3020" stroke-width="3" stroke-dasharray="6,4"/>
+            <line x1="180" y1="200" x2="320" y2="130" stroke="#3a3020" stroke-width="3" stroke-dasharray="6,4"/>
+            <line x1="180" y1="200" x2="380" y2="280" stroke="#3a3020" stroke-width="3" stroke-dasharray="6,4"/>
+            <line x1="120" y1="120" x2="320" y2="130" stroke="#3a3020" stroke-width="3" stroke-dasharray="6,4"/>
+            <line x1="320" y1="130" x2="380" y2="280" stroke="#3a3020" stroke-width="3" stroke-dasharray="6,4"/>
+
+            <!-- Village -->
+            <g class="map-zone" data-slug="village" data-minlevel="1">
+              <circle cx="180" cy="200" r="50" fill="#1a1408" stroke="#c9a84c" stroke-width="2" opacity="0.9"/>
+              <circle cx="180" cy="200" r="50" fill="transparent" stroke="#c9a84c" stroke-width="2" class="zone-ring"/>
+              <!-- Maisons -->
+              <rect x="162" y="188" width="16" height="14" rx="1" fill="#4a3820"/>
+              <polygon points="162,188 170,180 178,188" fill="#6a4a28"/>
+              <rect x="182" y="192" width="14" height="12" rx="1" fill="#4a3820"/>
+              <polygon points="182,192 189,185 196,192" fill="#6a4a28"/>
+              <rect x="168" y="205" width="12" height="10" rx="1" fill="#3a2810"/>
+              <!-- Fumée -->
+              <path d="M170 188 Q168 183 172 179" stroke="#888" stroke-width="1.5" fill="none" opacity="0.6"/>
+              <text x="180" y="230" text-anchor="middle" font-family="Cinzel" font-size="9" fill="#c9a84c">Village</text>
+              <text x="180" y="242" text-anchor="middle" font-family="Cinzel" font-size="7" fill="#8a7a5a">de Cendremont</text>
+            </g>
+
+            <!-- Forêt -->
+            <g class="map-zone" data-slug="forest" data-minlevel="1">
+              <circle cx="120" cy="120" r="42" fill="#0a1a0a" stroke="#2d5a1b" stroke-width="2" opacity="0.9"/>
+              <circle cx="120" cy="120" r="42" fill="transparent" stroke="#2d5a1b" stroke-width="2" class="zone-ring"/>
+              <!-- Arbres -->
+              <polygon points="120,95 108,115 132,115" fill="#1a4a10"/>
+              <polygon points="120,100 110,117 130,117" fill="#2d5a1b"/>
+              <polygon points="104,105 94,122 114,122" fill="#1a4a10"/>
+              <polygon points="136,105 126,122 146,122" fill="#1a4a10"/>
+              <rect x="118" y="115" width="4" height="8" fill="#4a2a10"/>
+              <rect x="102" y="122" width="4" height="6" fill="#4a2a10"/>
+              <rect x="134" y="122" width="4" height="6" fill="#4a2a10"/>
+              <text x="120" y="140" text-anchor="middle" font-family="Cinzel" font-size="9" fill="#4a9a2a">Forêt des</text>
+              <text x="120" y="151" text-anchor="middle" font-family="Cinzel" font-size="7" fill="#4a9a2a">Murmures</text>
+            </g>
+
+            <!-- Ruines -->
+            <g class="map-zone" data-slug="ruins" data-minlevel="2">
+              <circle cx="320" cy="130" r="50" fill="#120e08" stroke="#8b6914" stroke-width="2" opacity="0.9"/>
+              <circle cx="320" cy="130" r="50" fill="transparent" stroke="#8b6914" stroke-width="2" class="zone-ring"/>
+              <!-- Colonnes brisées -->
+              <rect x="302" y="108" width="8" height="28" rx="1" fill="#3a2a10"/>
+              <rect x="302" y="104" width="10" height="5" rx="1" fill="#4a3a18"/>
+              <rect x="318" y="112" width="8" height="22" rx="1" fill="#3a2a10"/>
+              <rect x="316" y="108" width="12" height="5" rx="1" fill="#4a3a18"/>
+              <rect x="330" y="106" width="6" height="18" rx="1" fill="#3a2a10"/>
+              <!-- Pierres éparpillées -->
+              <rect x="298" y="136" width="10" height="5" rx="1" fill="#2a1a08" transform="rotate(-15,303,138)"/>
+              <rect x="320" y="134" width="8" height="4" rx="1" fill="#2a1a08" transform="rotate(10,324,136)"/>
+              <text x="320" y="162" text-anchor="middle" font-family="Cinzel" font-size="9" fill="#c9a84c">Ruines</text>
+              <text x="320" y="173" text-anchor="middle" font-family="Cinzel" font-size="7" fill="#8b6914">d'Eldrath</text>
+              <!-- Badge niveau requis -->
+              <circle cx="350" cy="100" r="10" fill="#1a0a00" stroke="#8b6914" stroke-width="1.5"/>
+              <text x="350" y="104" text-anchor="middle" font-family="Cinzel" font-size="8" fill="#c9a84c">2</text>
+            </g>
+
+            <!-- Donjon -->
+            <g class="map-zone" data-slug="dungeon" data-minlevel="3">
+              <circle cx="380" cy="280" r="42" fill="#0a0a14" stroke="#4a2a6e" stroke-width="2" opacity="0.9"/>
+              <circle cx="380" cy="280" r="42" fill="transparent" stroke="#4a2a6e" stroke-width="2" class="zone-ring"/>
+              <!-- Porte du donjon -->
+              <rect x="366" y="265" width="28" height="22" rx="2" fill="#1a0a2e"/>
+              <path d="M366 265 Q380 252 394 265" fill="#2a1a4e" stroke="#4a2a6e" stroke-width="1.5"/>
+              <rect x="374" y="270" width="12" height="17" rx="1" fill="#0a0a1a"/>
+              <!-- Chaînes -->
+              <line x1="374" y1="274" x2="370" y2="278" stroke="#666" stroke-width="1.5"/>
+              <line x1="386" y1="274" x2="390" y2="278" stroke="#666" stroke-width="1.5"/>
+              <!-- Crânes décoratifs -->
+              <circle cx="362" cy="262" r="4" fill="#2a1a1a" stroke="#4a2a2e" stroke-width="1"/>
+              <circle cx="398" cy="262" r="4" fill="#2a1a1a" stroke="#4a2a2e" stroke-width="1"/>
+              <text x="380" y="302" text-anchor="middle" font-family="Cinzel" font-size="9" fill="#9a60d0">Donjon de</text>
+              <text x="380" y="313" text-anchor="middle" font-family="Cinzel" font-size="7" fill="#6a3a9a">l'Abîme</text>
+              <!-- Badge niveau requis -->
+              <circle cx="410" cy="252" r="10" fill="#0a0014" stroke="#4a2a6e" stroke-width="1.5"/>
+              <text x="410" y="256" text-anchor="middle" font-family="Cinzel" font-size="8" fill="#9a60d0">3</text>
+            </g>
+
+            <!-- Titre carte -->
+            <text x="250" y="25" text-anchor="middle" font-family="Cinzel" font-size="13" fill="#c9a84c" opacity="0.7">— Carte du Monde —</text>
+
+          </svg>
+        </div>
+      </div>
+
+      <!-- Panneau info lieu -->
+      <div class="info-panel">
+        <div id="panel-idle" class="panel-state active">
+          <div class="idle-icon">🗺️</div>
+          <p class="idle-text">Cliquez sur un lieu pour l'explorer</p>
+        </div>
+
+        <div id="panel-location" class="panel-state">
+          <div class="location-header">
+            <h2 id="loc-name"></h2>
+            <span class="loc-badge" id="loc-badge"></span>
+          </div>
+          <p class="loc-description" id="loc-description"></p>
+          <p class="loc-flavor" id="loc-flavor"></p>
+
+          <div id="loc-enemies" class="enemies-section"></div>
+
+          <div id="quest-panel" class="quest-panel" style="display:none">
+            <div class="quest-header">
+              <span class="quest-icon">📜</span>
+              <h3 id="quest-title"></h3>
+            </div>
+            <p id="quest-description" class="quest-desc"></p>
+            <div class="quest-rewards">
+              <span id="quest-xp" class="reward xp-reward"></span>
+              <span id="quest-gold" class="reward gold-reward"></span>
+            </div>
+            <div class="quest-status-wrap" id="quest-status-wrap"></div>
+          </div>
+
+          <div class="location-actions">
+            <button class="btn-primary" id="btn-travel">Voyager ici ⚔️</button>
+          </div>
+          <div id="travel-message" class="travel-message"></div>
+        </div>
+
+        <!-- Journal des quêtes -->
+        <div id="panel-journal" class="quest-journal">
+          <h3 class="journal-title">📜 Journal des quêtes</h3>
+          <div id="journal-list"></div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="js/puppets.js"></script>
+  <script src="js/explore.js"></script>
+</body>
+</html>
