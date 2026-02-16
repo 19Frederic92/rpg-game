@@ -191,7 +191,7 @@ function renderProfile(p) {
 }
 
 document.getElementById('btn-play').addEventListener('click', () => {
-  alert('Exploration — à venir dans l\'étape 3 ! 🗺️');
+ window.location.href = '/explore.html';
 });
 
 document.getElementById('btn-delete').addEventListener('click', async () => {
