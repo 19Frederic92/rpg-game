@@ -61,7 +61,7 @@
   letter-spacing: 0.1em;
 }
 .map-wrap { width: 100%; overflow: hidden; }
-#world-map { width: 100%; height: auto; display:block;}
+#world-map { width: 100%; height: auto; display:block;min-height: 300px;}
 
 .map-zone {
   cursor: pointer;
