@@ -33,11 +33,11 @@
 
 /* Layout */
 .explore-layout {
-  display: grid;
-  grid-template-columns: 1fr 380px;
+  display: flex;
+  flex-direction: column;
   gap: 1.5rem;
   padding: 1.5rem;
-  max-width: 1100px;
+  max-width: 900px;
   margin: 0 auto;
   min-height: calc(100vh - 70px);
 }
@@ -60,8 +60,8 @@
   text-align: center;
   letter-spacing: 0.1em;
 }
-.map-wrap { width: 100%; }
-#world-map { width: 100%; height: auto; }
+.map-wrap { width: 100%; overflow: hidden; }
+#world-map { width: 100%; height: auto; display:block;}
 
 .map-zone {
   cursor: pointer;
